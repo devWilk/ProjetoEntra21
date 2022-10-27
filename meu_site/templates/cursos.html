@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{%block titulo%}Cursos{% endblock %}
+
+{% block corpo %}
+    <center>
+        <h1>Lista de cursos</h1>
+    </center>
+    <div style="margin-left: 15%;">
+        <a href="cadastra-curso"><button class="btn btn-primary">Cadastrar Curso</button></a>
+    </div>
+    <center>
+        <table style="width: 70% ; margin-top:20px ;" class="table table-striped">
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>Duração</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in lista_curso %}
+            <tr>
+                <td>{{ curso.nome }}</td>
+                <td>{{ curso.duracao }} 
+                    {% if curso.duracao == 1 %}
+                    horas
+                    {% else %}
+                    horas</td>
+                    {% endif %}
+                <td><a href="alterar-curso/{{ curso.id }}">
+                    <button class="btn btn-warning">Alterar</button>
+                </a></td>
+                <td><a href="excluir-curso/{{ curso.id }}">
+                    <button class="btn btn-danger">Excluir</button>
+                </a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" align="right">Total de Registros: {{ total_registro }}</td>
+            </tr>
+        </tfoot>
+    </table>
+    </center>
+    
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Alterar de curso{% endblock %}
+
+{% block corpo %}
+<div align="center" style="margin-top : 50px;">
+    <div align="center">
+        <h1>Alterar Cursos</h1>
+    </div>
+    <form action="" method="POST" style="width: 70%;">
+        {% csrf_token %}
+        <div class="mb-3">
+            <div align="left">
+                <label for="formGroupExampleInput" class="form-label">Nome do Curso</label>
+            </div>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="{{ curso.nome }}" value="{{ curso.nome }}">
+        </div>
+        <div class="mb-3">
+            <div align="left">
+                <label for="formGroupExampleInput2" class="form-label">Duração</label>
+            </div>
+                <input type="number" class="form-control" id="duracao" name="duracao" placeholder="{{ curso.duracao }}" value="{{ curso.duracao }}">
+        </div>
+        <div align="right">
+            <input class="btn btn-warning" type="submit" value="Alterar">
+            <input class="btn btn-secondary" type="reset" value="Cancelar">
+        </div>
+    </form>
+    
+</div>
+    
+   
+    {% endblock %}

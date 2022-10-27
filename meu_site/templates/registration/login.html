@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Acessar | Projeto Django{% endblock %}
+
+{% block corpo%}
+<div style="width:50%; margin-top:5%; margin-left:30%;">
+    <div align="center">
+        <h1>Login</h1>
+    </div>
+    {% if form.errors %}
+    <div class="alert alert-primary" role="alert">
+        Login/Senha inválidos
+    </div>
+    {% endif %}
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"> Login</label>
+            {{ form.username }}
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"> Senha</label>
+            {{ form.password }}
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Entrar">
+            <input class="btn btn-secondary" type="reset" value="Cancelar">
+        </div>
+        <input type="hidden" name="hidden" value="{{ next }}"
+    </form>
+</div>  
+{% endblock %}
